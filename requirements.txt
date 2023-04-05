@@ -1,3 +1,5 @@
-flask
+flask==2.2.3
 flask-cors
 python-dotenv==1.0.0
+SQLAlchemy==2.0.8
+marshmallow==3.19.0
