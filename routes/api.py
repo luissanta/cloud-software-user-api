@@ -3,9 +3,9 @@ import json
 from flask import Blueprint, request
 from flask_jwt_extended import create_access_token
 
-from app.dtos.user_dto import UserDTO
-from app.models.user import User
-from app.models.database import database
+from dtos.user_dto import UserDTO
+from models.user import User
+from models.database import database
 
 api_routes = Blueprint('api', __name__)
 
@@ -15,13 +15,11 @@ def signup():
     try:
         user = json.loads(request.data, object_hook=UserDTO.from_json)
         if User.query.filter(User.username == user.username).first() is not None:
-            return {"error":"user already exist"}, 400
+            return {"error": "user already exist"}, 400
 
         newUser = User(username=user.username, password=user.password)
-
         database.session.add(newUser)
         database.session.commit()
-
         return {}, 201
     except KeyError:
         return {"error": "Bad request"}, 400

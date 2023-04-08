@@ -3,8 +3,8 @@ from flask_jwt_extended import JWTManager
 
 from config import ProductionConfig
 from flask_cors import CORS
-from app.routes import api_routes
-from app.models.database import database
+from routes import api_routes
+from models.database import database
 
 
 app = Flask(__name__)
