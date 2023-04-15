@@ -13,6 +13,11 @@ class Config:
     DEBUG = False
 
 
+class Regexp:
+    PASSWORD = '^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!#%*?&]{6,20}$'
+    EMAIL = '([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+'
+
+
 class DevelopmentConfig(Config):
     DEBUG = True
 
