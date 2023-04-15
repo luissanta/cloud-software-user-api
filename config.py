@@ -14,7 +14,7 @@ class Config:
                               os.environ.get('PGSQL_DATABASE')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     PROPAGATE_EXCEPTIONS = True
-    JWT_SECRET_KEY = 'SFDJKGKJFD7SG987FDS?9889'
+    JWT_SECRET_KEY = os.environ.get('SECRET_KEY')
     DEBUG = False
 
 
