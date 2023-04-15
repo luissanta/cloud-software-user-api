@@ -6,7 +6,6 @@ load_dotenv()
 
 class Config:
     STATIC_FOLDER = "views/static/"
-    # SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://postgres:admin@localhost/user'
     SQLALCHEMY_DATABASE_URI = 'postgresql://' + \
                               os.environ.get('PGSQL_USER') + ':' + \
                               os.environ.get('PGSQL_PASSWORD') + '@' + \
