@@ -7,3 +7,4 @@ marshmallow_sqlalchemy==0.25.0
 python-dotenv==1.0.0
 SQLAlchemy==2.0.8
 psycopg2
+gunicorn
