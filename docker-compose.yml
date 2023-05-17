@@ -6,7 +6,7 @@ services:
     volumes:
       - .:/app_user
     ports:
-      - "8080:8080"
+      - "5001:8080"
     networks:
       private-net:
         aliases:

@@ -1,13 +1,11 @@
-FROM python:3.10
+FROM python:3.11-slim
 
-WORKDIR /app_user
+ENV PYTHONUNBUFFERED True
 
-COPY requirements.txt requirements.txt
+ENV APP_HOME /app
+WORKDIR $APP_HOME
+COPY . ./
 
-RUN pip install --no-cache-dir --upgrade -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
-COPY . .
-
-EXPOSE 8080
-
-CMD ["gunicorn", "-b", "0.0.0.0:8080", "-w", "2", "--threads", "2", "wsgi:app"]
+CMD exec gunicorn --bind 0.0.0.0:8080 --workers 1 --threads 8 --timeout 0 wsgi:app

@@ -1,20 +1,23 @@
+import os
+from dotenv import load_dotenv
 from datetime import timedelta
-from decouple import config
+
+load_dotenv()
 
 
 class Config:
     STATIC_FOLDER = "views/static/"
     SQLALCHEMY_DATABASE_URI = 'postgresql://' + \
-                              config('PGSQL_USER') + ':' + \
-                              config('PGSQL_PASSWORD') + '@' + \
-                              config('PGSQL_HOST') + ':' + \
-                              config('PGSQL_PORT') + '/' + \
-                              config('PGSQL_DATABASE')
+                              os.environ.get('PGSQL_USER', 'postgres') + ':' + \
+                              os.environ.get('PGSQL_PASSWORD', 'e6F{WzmMK,XKu`&8') + '@' + \
+                              os.environ.get('PGSQL_HOST', '34.67.55.173') + ':' + \
+                              os.environ.get('PGSQL_PORT', '5432') + '/' + \
+                              os.environ.get('PGSQL_DATABASE', 'file_compressor_db')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     PROPAGATE_EXCEPTIONS = True
     ACCESS_EXPIRES = timedelta(hours=4)
     JWT_ACCESS_TOKEN_EXPIRES = ACCESS_EXPIRES
-    JWT_SECRET_KEY = config('SECRET_KEY')
+    JWT_SECRET_KEY = os.environ.get('SECRET_KEY', 'SFDJKGKJfdsFD7SG987FDS?9889dsfa')
     DEBUG = False
 
 
