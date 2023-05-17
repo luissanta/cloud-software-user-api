@@ -8,6 +8,6 @@ RUN pip install --no-cache-dir --upgrade -r requirements.txt
 
 COPY . .
 
-EXPOSE 8080
+EXPOSE 5001
 
-CMD ["gunicorn", "-b", "0.0.0.0:8080", "-w", "2", "--threads", "2", "wsgi:app"]
+CMD ["gunicorn", "-b", "0.0.0.0:5001", "-w", "2", "--threads", "2", "wsgi:app"]
