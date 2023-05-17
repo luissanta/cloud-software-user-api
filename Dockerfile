@@ -2,6 +2,10 @@ FROM python:3.10
 
 WORKDIR /app_user
 
+COPY .env.local /app_user/.env
+
+RUN export $(cat /app_user/.env | xargs)
+
 COPY . /app_user
 
 RUN pip install --no-cache-dir --upgrade -r requirements.txt
