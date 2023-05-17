@@ -1,15 +1,14 @@
 FROM python:3.10
 
-WORKDIR /app_user
+WORKDIR /app
 
-COPY .env.local /app_user/.env
+COPY . /app
 
-RUN export $(cat /app_user/.env | xargs)
+RUN pip install --no-cache-dir -r requirements.txt
 
-COPY . /app_user
+EXPOSE 5001
 
-RUN pip install --no-cache-dir --upgrade -r requirements.txt
+ENV DOTENV_PATH=/app/.env
 
-EXPOSE 8080
+CMD ["gunicorn", "--bind", "0.0.0.0:5001", "app:app"]
 
-CMD ["gunicorn", "-b", "0.0.0.0:8080", "-w", "2", "--threads", "2", "wsgi:app"]
