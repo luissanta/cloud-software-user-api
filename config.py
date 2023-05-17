@@ -1,20 +1,20 @@
-from decouple import config
+import os
 from datetime import timedelta
 
 
 class Config:
     STATIC_FOLDER = "views/static/"
     SQLALCHEMY_DATABASE_URI = 'postgresql://' + \
-                              config('PGSQL_USER') + ':' + \
-                              config('PGSQL_PASSWORD') + '@' + \
-                              config('PGSQL_HOST') + ':' + \
-                              config('PGSQL_PORT') + '/' + \
-                              config('PGSQL_DATABASE')
+                              os.environ['PGSQL_USER'] + ':' + \
+                              os.environ['PGSQL_PASSWORD'] + '@' + \
+                              os.environ['PGSQL_HOST'] + ':' + \
+                              os.environ['PGSQL_PORT'] + '/' + \
+                              os.environ['PGSQL_DATABASE']
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     PROPAGATE_EXCEPTIONS = True
     ACCESS_EXPIRES = timedelta(hours=4)
     JWT_ACCESS_TOKEN_EXPIRES = ACCESS_EXPIRES
-    JWT_SECRET_KEY = config('SECRET_KEY')
+    JWT_SECRET_KEY = os.environ['SECRET_KEY']
     DEBUG = False
 
 

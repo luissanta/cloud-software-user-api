@@ -4,8 +4,6 @@ flask_JWT_Extended
 flask_sqlalchemy
 marshmallow
 marshmallow_sqlalchemy
-python-dotenv
-python-decouple==3.8
 SQLAlchemy
 psycopg2-binary
 gunicorn
