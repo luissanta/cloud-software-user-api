@@ -2,11 +2,9 @@ FROM python:3.10
 
 WORKDIR /app_user
 
-COPY requirements.txt requirements.txt
+COPY . /app_user
 
 RUN pip install --no-cache-dir --upgrade -r requirements.txt
-
-COPY . .
 
 EXPOSE 8080
 
