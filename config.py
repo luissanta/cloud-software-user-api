@@ -15,7 +15,7 @@ class Config:
                               os.environ.get('PGSQL_DATABASE')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     PROPAGATE_EXCEPTIONS = True
-    ACCESS_EXPIRES = timedelta(hours=2)
+    ACCESS_EXPIRES = timedelta(hours=4)
     JWT_ACCESS_TOKEN_EXPIRES = ACCESS_EXPIRES
     JWT_SECRET_KEY = os.environ.get('SECRET_KEY')
     DEBUG = False
