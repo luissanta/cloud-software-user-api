@@ -1,14 +1,13 @@
 FROM python:3.10
 
-WORKDIR /app
+WORKDIR /app_user
 
-COPY . /app
+COPY . /app_user
 
 RUN pip install --no-cache-dir -r requirements.txt
 
-EXPOSE 5001
+EXPOSE 8080
 
 ENV DOTENV_PATH=/app/.env
 
-CMD ["gunicorn", "--bind", "0.0.0.0:5001", "app:app"]
-
+CMD ["gunicorn", "-b", "0.0.0.0:8080", "-w", "2", "--threads", "2", "wsgi:app"]
